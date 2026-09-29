@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER
+         ============================================ -->
+    <header class="header">
+        <div class="logo">MP</div>
+        <h1 class="nombre">María <span>Pérez</span></h1>
+    </header>
+
+    <!-- ============================================
+         ASIDE: menú de navegación con iconos
+         ============================================ -->
+    <aside class="aside">
+        <nav class="menu">
+            <button class="menu-item activo" data-seccion="sobre-mi" title="Sobre mí">
+                <span class="icono">🏠</span>
+                <span class="etiqueta">Sobre mí</span>
+            </button>
+            <button class="menu-item" data-seccion="proyectos" title="Proyectos">
+                <span class="icono">💼</span>
+                <span class="etiqueta">Proyectos</span>
+            </button>
+            <button class="menu-item" data-seccion="contacto" title="Contacto">
+                <span class="icono">✉️</span>
+                <span class="etiqueta">Contacto</span>
+            </button>
+        </nav>
+    </aside>
+
+    <!-- ============================================
+         MAIN: aquí JS inyecta el contenido
+         ============================================ -->
+    <main class="main" id="main">
+        <!-- El contenido lo pondrá JavaScript al cargar la página -->
+    </main>
+
+    <!-- ============================================
+         FOOTER: marquesina de redes sociales
+         ============================================ -->
+    <footer class="footer">
+        <div class="marquesina">
+            <div class="marquesina-contenido">
+                <span>🐦 Twitter · @mariaperez</span>
+                <span>💼 LinkedIn · /in/mariaperez</span>
+                <span>💻 GitHub · @mariaperez</span>
+                <span>📸 Instagram · @maria.dev</span>
+                <span>🌐 Web · mariaperez.dev</span>
+                <!-- Se repite para que el bucle sea continuo -->
+                <span>🐦 Twitter · @mariaperez</span>
+                <span>💼 LinkedIn · /in/mariaperez</span>
+                <span>💻 GitHub · @mariaperez</span>
+                <span>📸 Instagram · @maria.dev</span>
+                <span>🌐 Web · mariaperez.dev</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript al final para que el HTML ya exista -->
+    <script src="script.js"></script>
+
+</body>
+</html>
