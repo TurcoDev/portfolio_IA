@@ -44,6 +44,59 @@ const secciones = {
             <li>💼 LinkedIn: <a href="#">/in/mariaperez</a></li>
             <li>💻 GitHub: <a href="#">@mariaperez</a></li>
         </ul>
+    `,
+
+    'pokemon': `
+        <div class="pokemon-container">
+            <div class="pokemon-header">
+                <h2>Pokédex</h2>
+                <p>Explora 30 Pokémon increíbles</p>
+            </div>
+
+            <div class="pokemon-filtros">
+                <div class="busqueda">
+                    <input 
+                        type="text" 
+                        id="busqueda" 
+                        class="input-busqueda" 
+                        placeholder="🔍 Buscar por nombre..."
+                    >
+                </div>
+
+                <div class="filtro-tipos">
+                    <label for="filtro-tipo">Filtrar por tipo:</label>
+                    <select id="filtro-tipo" class="select-tipo">
+                        <option value="">Todos</option>
+                        <option value="fire">🔥 Fire</option>
+                        <option value="water">💧 Water</option>
+                        <option value="grass">🌿 Grass</option>
+                        <option value="electric">⚡ Electric</option>
+                        <option value="psychic">💜 Psychic</option>
+                        <option value="normal">⭕ Normal</option>
+                        <option value="flying">🪶 Flying</option>
+                        <option value="bug">🐛 Bug</option>
+                        <option value="poison">☠️ Poison</option>
+                        <option value="ground">🏜️ Ground</option>
+                        <option value="rock">🪨 Rock</option>
+                        <option value="ghost">👻 Ghost</option>
+                        <option value="ice">❄️ Ice</option>
+                        <option value="dragon">🐉 Dragon</option>
+                        <option value="dark">🌑 Dark</option>
+                        <option value="steel">⚙️ Steel</option>
+                        <option value="fairy">🧚 Fairy</option>
+                        <option value="fighting">👊 Fighting</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="pokemon-grid" id="pokemon-grid">
+                <!-- Las cards se inyectarán aquí por JavaScript -->
+            </div>
+
+            <div class="sin-resultados" id="sin-resultados" style="display: none;">
+                <p>😕 No se encontraron Pokémon con esos criterios</p>
+            </div>
+        </div>
     `
 };
 
@@ -78,6 +131,14 @@ function mostrarSeccion(nombre) {
     main.style.animation = 'none';
     void main.offsetWidth; // fuerza al navegador a recalcular
     main.style.animation = '';
+
+    // Si es la sección de Pokémon, inicializar Pokédex
+    if (nombre === 'pokemon' && typeof inicializarPokedex === 'function') {
+        // Esperar a que el DOM se actualice
+        setTimeout(function() {
+            inicializarPokedex();
+        }, 50);
+    }
 }
 
 // ============================================
