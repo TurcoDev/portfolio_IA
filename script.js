@@ -36,14 +36,117 @@ const secciones = {
     `,
 
     'contacto': `
-        <h2>Contacto</h2>
-        <p>¿Quieres hablar conmigo sobre un proyecto o simplemente saludar? Aquí tienes mis canales:</p>
-        <ul class="lista-contacto">
-            <li>📧 Email: <a href="mailto:hola@mariaperez.dev">hola@mariaperez.dev</a></li>
-            <li>🐦 Twitter: <a href="#">@mariaperez</a></li>
-            <li>💼 LinkedIn: <a href="#">/in/mariaperez</a></li>
-            <li>💻 GitHub: <a href="#">@mariaperez</a></li>
-        </ul>
+        <div class="contacto-container">
+            <div class="contacto-header">
+                <h2>📬 Contacto</h2>
+                <p>¿Quieres hablar conmigo? Envíame un mensaje y te responderé lo antes posible.</p>
+            </div>
+
+            <form id="formulario-contacto" class="formulario-contacto">
+                <!-- NOMBRE -->
+                <div class="form-grupo">
+                    <label for="nombre">Nombre completo *</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        name="nombre"
+                        placeholder="Tu nombre"
+                        required
+                    >
+                    <span class="error-mensaje" id="error-nombre"></span>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="form-grupo">
+                    <label for="email">Email *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        placeholder="tu@email.com"
+                        required
+                    >
+                    <span class="error-mensaje" id="error-email"></span>
+                </div>
+
+                <!-- TELÉFONO (opcional) -->
+                <div class="form-grupo">
+                    <label for="telefono">Teléfono (opcional)</label>
+                    <input 
+                        type="tel" 
+                        id="telefono" 
+                        name="telefono"
+                        placeholder="+34 666 123 456"
+                    >
+                    <span class="error-mensaje" id="error-telefono"></span>
+                </div>
+
+                <!-- ASUNTO -->
+                <div class="form-grupo">
+                    <label for="asunto">Asunto *</label>
+                    <input 
+                        type="text" 
+                        id="asunto" 
+                        name="asunto"
+                        placeholder="¿Sobre qué quieres hablar?"
+                        required
+                    >
+                    <span class="error-mensaje" id="error-asunto"></span>
+                </div>
+
+                <!-- MENSAJE -->
+                <div class="form-grupo">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea 
+                        id="mensaje" 
+                        name="mensaje"
+                        placeholder="Escribe tu mensaje aquí..."
+                        rows="6"
+                        required
+                    ></textarea>
+                    <span class="error-mensaje" id="error-mensaje"></span>
+                </div>
+
+                <!-- BOTÓN ENVIAR -->
+                <button type="submit" class="btn-enviar">
+                    <span class="btn-texto">Enviar mensaje</span>
+                    <span class="btn-icono">✉️</span>
+                </button>
+
+                <!-- MENSAJE DE ÉXITO -->
+                <div class="mensaje-exito" id="mensaje-exito" style="display: none;">
+                    <p>✅ ¡Mensaje enviado correctamente! Te responderé pronto.</p>
+                </div>
+
+                <!-- MENSAJE DE ERROR -->
+                <div class="mensaje-error" id="mensaje-error" style="display: none;">
+                    <p>❌ Hubo un problema al enviar el mensaje. Intenta de nuevo.</p>
+                </div>
+            </form>
+
+            <!-- CANALES ALTERNATIVOS -->
+            <div class="contacto-alternativo">
+                <h3>Otros canales de contacto:</h3>
+                <div class="lista-contacto">
+                    <a href="mailto:hola@mariaperez.dev" class="boton-contacto email">
+                        <span class="icono">📧</span>
+                        <span class="texto">hola@mariaperez.dev</span>
+                    </a>
+                    <a href="#" class="boton-contacto twitter">
+                        <span class="icono">🐦</span>
+                        <span class="texto">Twitter</span>
+                    </a>
+                    <a href="#" class="boton-contacto linkedin">
+                        <span class="icono">💼</span>
+                        <span class="texto">LinkedIn</span>
+                    </a>
+                    <a href="#" class="boton-contacto github">
+                        <span class="icono">💻</span>
+                        <span class="texto">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     `,
 
     'pokemon': `
@@ -137,6 +240,13 @@ function mostrarSeccion(nombre) {
         // Esperar a que el DOM se actualice
         setTimeout(function() {
             inicializarPokedex();
+        }, 50);
+    }
+
+    // Si es la sección de Contacto, inicializar formulario
+    if (nombre === 'contacto' && typeof inicializarFormularioContacto === 'function') {
+        setTimeout(function() {
+            inicializarFormularioContacto();
         }, 50);
     }
 }
